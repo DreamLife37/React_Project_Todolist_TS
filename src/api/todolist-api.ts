@@ -10,30 +10,68 @@ const instance = axios.create({
 
 export const todolistAPI = {
     getTodolist() {
-        return instance.get<TodoType[]>('todo-lists')
+        return instance.get<TodolistType[]>('todo-lists')
     },
     createTodolist(title: string) {
-        return instance.post<'', AxiosResponse<BaseResponseType<{ item: TodoType }>>, { title: string }>('todo-lists', {title})
+        return instance.post<'', AxiosResponse<ResponseType<{ item: TodolistType }>>, { title: string }>('todo-lists', {title})
     },
     deleteTodolist(todolistId: string) {
-        return instance.delete<BaseResponseType>(`todo-lists/${todolistId}`)
+        return instance.delete<ResponseType>(`todo-lists/${todolistId}`)
     },
     updateTodolist(todolistId: string, title: string) {
-        return instance.put<BaseResponseType>(`todo-lists/${todolistId}`, {title})
+        return instance.put<ResponseType>(`todo-lists/${todolistId}`, {title})
+    }
+}
+
+export const taskAPI = {
+    getTasks(todolistId: string) {
+        return instance.get<GetTaskResponseType>(`/todo-lists/${todolistId}/tasks`)
+    },
+    createTask(todolistId: string, title: string) {
+        return instance.post<ResponseType<{ item: TaskType }>>(`/todo-lists/${todolistId}/tasks`, {title})
+    },
+    deleteTask(todolistId: string, taskId: string) {
+        return instance.delete<ResponseType>(`/todo-lists/${todolistId}/tasks/${taskId}`)
+    },
+    updateTask(todolistId: string, taskId: string, title: string) {
+        return instance.put<ResponseType<{ item: TaskType }>>(`/todo-lists/${todolistId}/tasks/${taskId}`, {title})
     }
 }
 
 //Types:
-type TodoType = {
+type TodolistType = {
     "id": string,
     "title": string,
     "addedDate": string,
     "order": number
 }
 
-type BaseResponseType<T = {}> = {
+type ResponseType<T = {}> = {
     fieldsErrors: string[],
     resultCode: number
     messages: string[],
     data: T
 }
+
+type TaskType = {
+    description: string
+    title: string
+    completed: boolean
+    status: number
+    priority: number
+    startDate: string
+    deadline: string
+    id: string
+    todoListId: string
+    order: number
+    addedDate: string
+}
+
+type GetTaskResponseType = {
+    error: string | null,
+    totalCount: number
+    items: TaskType[]
+}
+
+
+
