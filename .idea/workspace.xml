@@ -3,13 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="a5f071ad-e5fc-4e6c-9eb4-168515a82a90" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/todolists-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolists-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ErrorSnackbar/ErrorSnackbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ErrorSnackbar/ErrorSnackbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/tasks-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/todolists-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/errorUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/errorUtils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +57,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\it-incubator\it-incubator-todolist-ts\src\features\Login" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +71,9 @@
       <option name="presentableId" value="Default" />
       <updated>1654787320822</updated>
       <workItem from="1654787323085" duration="3771000" />
-      <workItem from="1654791127354" duration="20706000" />
+      <workItem from="1654791127354" duration="21603000" />
+      <workItem from="1654968513954" duration="657000" />
+      <workItem from="1655611706413" duration="13055000" />
     </task>
     <servers />
   </component>
