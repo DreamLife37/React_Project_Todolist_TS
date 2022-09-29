@@ -6,8 +6,6 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {addTodolistTC, fetchTodolistsTC, removeTodolistTC} from "./todolists-reducer";
 import {AxiosError} from "axios";
 
-const initialState: TasksStateType = {}
-
 export const fetchTasksTC = createAsyncThunk('tasks/fetchTasks', async (todolistId: string, thunkAPI) => {
     thunkAPI.dispatch(setAppStatusAC({status: "loading"}))
     const res = await todolistsAPI.getTasks(todolistId)
@@ -22,27 +20,24 @@ export const removeTaskTC = createAsyncThunk('tasks/removeTask',
         return {taskId: param.taskId, todolistId: param.todolistId}
     })
 
-
 export const addTaskTC = createAsyncThunk('/tasks/addTask',
-    async (param: { title: string, todolistId: string }, thunkAPI) => {
-        thunkAPI.dispatch(setAppStatusAC({status: "loading"}))
+    async (param: { title: string, todolistId: string }, {dispatch, rejectWithValue}) => {
+        dispatch(setAppStatusAC({status: "loading"}))
         try {
             const res = await todolistsAPI.createTask(param.todolistId, param.title)
             if (res.data.resultCode === 0) {
                 const task = res.data.data.item
-                //thunkAPI.dispatch(addTaskAC(res.data.data.item))
-                thunkAPI.dispatch(setAppStatusAC({status: "succeeded"}))
+                dispatch(setAppStatusAC({status: "succeeded"}))
                 return task
             } else {
-                handleServerAppError(res.data, thunkAPI.dispatch);
-                return thunkAPI.rejectWithValue(null)
+                handleServerAppError(res.data, dispatch);
+                return rejectWithValue(null)
             }
         } catch
             (err) {
-            // @ts-ignore
-            const error: AxiosError = err
-            handleServerNetworkError(error, thunkAPI.dispatch)
-            return thunkAPI.rejectWithValue(null)
+            const error = err as AxiosError
+            handleServerNetworkError(error, dispatch)
+            return rejectWithValue(null)
         }
     })
 
@@ -71,8 +66,8 @@ export const updateTaskTC = createAsyncThunk('/tasks/updateTask',
                 handleServerAppError(res.data, dispatch);
                 return rejectWithValue(null)
             }
-        } catch (error) {
-            // @ts-ignore
+        } catch (err) {
+            const error = err as AxiosError
             handleServerNetworkError(error, dispatch);
             return rejectWithValue(null)
         }
@@ -80,7 +75,7 @@ export const updateTaskTC = createAsyncThunk('/tasks/updateTask',
 
 const slice = createSlice({
     name: 'tasks',
-    initialState: initialState,
+    initialState: {} as TasksStateType,
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(addTodolistTC.fulfilled, (state, action) => {
@@ -115,7 +110,6 @@ const slice = createSlice({
                                                  action) => {
             const tasks = state[action.payload.todolistId]
             const index = tasks.findIndex(tl => tl.id === action.payload.taskId)
-
             if (index > -1) {
                 tasks[index] = {...tasks[index], ...action.payload.domainModel}
             }

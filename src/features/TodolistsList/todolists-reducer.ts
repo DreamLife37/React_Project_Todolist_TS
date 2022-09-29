@@ -1,8 +1,8 @@
 import {todolistsAPI, TodolistType} from '../../api/todolists-api'
-import {Dispatch} from 'redux'
 import {RequestStatusType, setAppStatusAC} from '../../app/app-reducer'
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {handleServerNetworkError} from "../../utils/errorUtils";
+import {AxiosError} from "axios";
 
 
 export const fetchTodolistsTC = createAsyncThunk('/todolists/fetchTodolists', async (param, {
@@ -14,8 +14,8 @@ export const fetchTodolistsTC = createAsyncThunk('/todolists/fetchTodolists', as
     try {
         dispatch(setAppStatusAC({status: "succeeded"}))
         return {todolists: res.data}
-    } catch (error) {
-        // @ts-ignore
+    } catch (err) {
+        const error = err as AxiosError
         handleServerNetworkError(error, dispatch)
         return rejectWithValue(null)
     }
@@ -34,8 +34,8 @@ export const removeTodolistTC = createAsyncThunk('/todolists/removeTodolist', as
         //скажем глобально приложению, что асинхронная операция завершена
         dispatch(setAppStatusAC({status: "succeeded"}))
         return {id: todolistId}
-    } catch (error) {
-        // @ts-ignore
+    } catch (err) {
+        const error = err as AxiosError
         handleServerNetworkError(error, dispatch)
         return rejectWithValue(null)
     }
@@ -50,8 +50,8 @@ export const addTodolistTC = createAsyncThunk('/todolists/addTodolist', async (t
     try {
         dispatch(setAppStatusAC({status: "succeeded"}))
         return {todolist: res.data.data.item}
-    } catch (error) {
-        // @ts-ignore
+    } catch (err) {
+        const error = err as AxiosError
         handleServerNetworkError(error, dispatch)
         return rejectWithValue(null)
     }
@@ -118,4 +118,4 @@ export type TodolistDomainType = TodolistType & {
     filter: FilterValuesType
     entityStatus: RequestStatusType
 }
-//type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType>
+
