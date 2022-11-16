@@ -1,0 +1,36 @@
+.containerLoginForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 120px);
+}
+
+.warning {
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #6c757d;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 0.25rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.warning div {
+
+}
+
+.warning a {
+    color: white;
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 import LinearProgress from '@mui/material/LinearProgress';
 import {Menu} from '@mui/icons-material';
 import {ErrorSnackbar} from '../components/ErrorSnackbar/ErrorSnackbar'
-import {BrowserRouter, HashRouter, Navigate, Route, Routes} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 import {Login} from "../features/Login/Login";
 import {CircularProgress} from "@mui/material";
 import {logoutTC} from "../features/Login/authReducer";
@@ -39,7 +39,6 @@ function App({demo = false}: PropsType) {
     }
 
     const logoutHandler = () => {
-        debugger
         dispatch(logoutTC())
     }
 
@@ -49,11 +48,11 @@ function App({demo = false}: PropsType) {
                 <ErrorSnackbar/>
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton edge="start" color="inherit" aria-label="menu">
-                            <Menu/>
-                        </IconButton>
+                        {/*<IconButton edge="start" color="inherit" aria-label="menu">*/}
+                        {/*    <Menu/>*/}
+                        {/*</IconButton>*/}
                         <Typography variant="h6">
-                            News
+                            Todolist by DevAndreyIT
                         </Typography>
                         {isLoggedIn && <Button color={'inherit'} onClick={logoutHandler}> Log out</Button>}
                     </Toolbar>

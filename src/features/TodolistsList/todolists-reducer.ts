@@ -10,8 +10,8 @@ export const fetchTodolistsTC = createAsyncThunk('/todolists/fetchTodolists', as
     rejectWithValue
 }) => {
     dispatch(setAppStatusAC({status: "loading"}))
-    const res = await todolistsAPI.getTodolists()
     try {
+        const res = await todolistsAPI.getTodolists()
         dispatch(setAppStatusAC({status: "succeeded"}))
         return {todolists: res.data}
     } catch (err) {
